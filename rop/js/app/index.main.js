@@ -382,8 +382,8 @@ var Shake = {
                 var speed = Math.abs(Shake.x + Shake.y + Shake.z - Shake.last_x - Shake.last_y - Shake.last_z) / diffTime * 10000;
                 if (speed > Shake.SHAKE_THRESHOLD) {
                     if(typeof Shake.callback == "function") {
-                        Shake.callback();
                         Shake.remove();
+                        Shake.callback();
                         initShake();
                     }
                 }
