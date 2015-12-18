@@ -383,7 +383,8 @@ var Shake = {
                 if (speed > Shake.SHAKE_THRESHOLD) {
                     if(typeof Shake.callback == "function") {
                         Shake.callback();
-                        //Shake.remove();
+                        Shake.remove();
+                        initShake();
                     }
                 }
                 Shake.last_x = Shake.x;
