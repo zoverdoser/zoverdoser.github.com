@@ -9,6 +9,7 @@ var canvas = document.getElementById("canvas"),
     UNITR = 58,
     LITTLEUNITR = 40,
     loader,
+    isFloating = false,
     startLevel = Number(query("level")) ? Number(query("level")) : 0;
 
 
@@ -184,12 +185,16 @@ var Grid = {
         }
     },
     reflash: function(speed, speed2) {
+        isFloating = true;
         var that = this;
         for(var i = 0; i < that.points.length; i++) {
             that.points[i].float2pos(2, 2, speed);
         }
         createjs.Tween.get().wait(speed2).call(function() {
             that.back2Origin(speed2);
+        });
+        createjs.Tween.get().wait(2 * speed2).call(function() {
+            isFloating = false;
         });
     }
 };
@@ -263,6 +268,7 @@ Point.prototype = {
         }
 
         this.body.on("mousedown", function(e) {
+            if(isFloating) return;
             that.press = true;
             that.body.x = e.stageX - Grid.offset.x;
             that.body.y = e.stageY - Grid.offset.y;
@@ -338,6 +344,59 @@ Line.prototype = {
     }
 };
 
+var Shake = {
+        SHAKE_THRESHOLD: 3000,
+        isYao: false,
+        last_update: 0,
+        x: 0,
+        y: 0,
+        z: 0,
+        last_x: 0,
+        last_y: 0,
+        last_z: 0,
+        callback: null,
+
+        init: function(callback) {
+            Shake.checkDev(callback);
+            Shake.callback = callback;
+            Shake.isYao = false;
+            Shake.last_update = 0;
+            Shake.x = Shake.y = Shake.z = Shake.last_x = Shake.last_y = Shake.last_z = 0;
+        },
+
+        checkDev: function(callback) {
+            if(window.DeviceMotionEvent) {
+                $(window).on("devicemotion", Shake.deviceMotionHandler);
+            }
+        },
+
+        deviceMotionHandler: function(eventData) {
+            var acceleration = eventData.originalEvent.accelerationIncludingGravity;
+            var curTime = +new Date();
+            if (curTime - Shake.last_update > 100 && !Shake.isYao) {
+                var diffTime = curTime - Shake.last_update;
+                Shake.last_update = curTime;
+                Shake.x = acceleration.x;
+                Shake.y = acceleration.y;
+                Shake.z = acceleration.z;
+                var speed = Math.abs(Shake.x + Shake.y + Shake.z - Shake.last_x - Shake.last_y - Shake.last_z) / diffTime * 10000;
+                if (speed > Shake.SHAKE_THRESHOLD) {
+                    if(typeof Shake.callback == "function") {
+                        Shake.callback();
+                        //Shake.remove();
+                    }
+                }
+                Shake.last_x = Shake.x;
+                Shake.last_y = Shake.y;
+                Shake.last_z = Shake.z;
+            }  
+        },
+
+        remove: function() {
+            $(window).off("devicemotion");
+        }
+};
+
 loadSource();
 
 stage.hide = function() {
@@ -367,35 +426,9 @@ function loadUI() {
 }
 
 function initShake() {
-    var SHAKE_THRESHOLD = 300;  
-    var last_update = 0;  
-    var x, y, z, last_x, last_y, last_z;
-
-    if(window.DeviceMotionEvent) {  
-        window.addEventListener('devicemotion', deviceMotionHandler, false);  
-    }
-   
-    function deviceMotionHandler(eventData) {
-        var acceleration = eventData.accelerationIncludingGravity;  
-        var curTime = new Date().getTime();  
-       
-        if((curTime - last_update) > 100) {  
-            var diffTime = curTime - last_update;  
-            last_update = curTime;  
-            x = acceleration.x;  
-            y = acceleration.y;  
-            z = acceleration.z;  
-       
-            var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
-
-            if (speed > SHAKE_THRESHOLD) {  
-                console.log(111);
-            }  
-            last_x = x;  
-            last_y = y;  
-            last_z = z;  
-        }  
-    }
+    Shake.init(function() {
+        jumpLevel();
+    });
 }
 
 function jumpLevel() {
