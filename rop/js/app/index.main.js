@@ -709,6 +709,7 @@ function initGame() {
     littleGrid.init();
     Grid.init();
     initSetting(startLevel);
+    jumpLevel()
 }
 
 function initSetting(index) {
@@ -750,7 +751,7 @@ function loadNextLevel() {
 }
 
 function loadLevel(index) {
-    if(/^\d+$/.test(index) && index > 0 && index < gameSettings.length-1) {
+    if(/^\d+$/.test(index) && index > 0 && index < gameSettings.length + 1) {
         index--;
         stage.fadeOut().call(function() {
             littleGrid.clear();
