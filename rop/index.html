@@ -9,12 +9,12 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="zoverdoser" content="zoverdoser,zoverdoser@gmail.com">
-    <title>首页</title>
+    <title>ROP</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="HandheldFriendly" content="true">
     <meta name="MobileOptimized" content="320">
-    <script src="js/viewport.js"></script>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta content="telephone=no,address=no,email=no" name="format-detection">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -25,7 +25,10 @@
 </head>
 <body id="index">
     <div class="wrapper">
-        <div class="canvasBox"><canvas id="canvas" width="640" height="1038"></canvas></div>
+        <div class="canvasBox">
+            <canvas id="canvas" width="640" height="1038"></canvas>
+            <div class="level"></div>
+        </div>
     </div>
     <script src="js/libs/createjs.js"></script>
     <script src="js/libs/jquery.js"></script>
