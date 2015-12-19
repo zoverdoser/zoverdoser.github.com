@@ -709,7 +709,6 @@ function initGame() {
     littleGrid.init();
     Grid.init();
     initSetting(startLevel);
-    jumpLevel()
 }
 
 function initSetting(index) {
