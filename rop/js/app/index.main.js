@@ -647,7 +647,7 @@ function loadNextLevel() {
 }
 
 function loadLevel(index) {
-    if(/^\d+$/.test(index) && index > 0 && index-1 < gameSettings.length) {
+    if(/^\d+$/.test(index) && index > 0 && index < gameSettings.length-1) {
         index--;
         stage.fadeOut().call(function() {
             littleGrid.clear();
