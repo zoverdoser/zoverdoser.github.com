@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="zh-cmn-Hans" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="zh-cmn-Hans" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="zh-cmn-Hans" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="zh-cmn-Hans" class="no-js" manifest="cache.manifest"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="author" content="zoverdoser, zoverdoser@gmail.com">
+    <title>领奖</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
+    <meta content="telephone=no,address=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/prize.css">
+    <script>
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            WeixinJSBridge.call('hideOptionMenu');
+        }, false);
+    </script>
+</head>
+<body id="prize">
+    <div class="wrapper">
+        <div class="logo"></div>
+        <div class="main">
+            <div class="topImg"><img src="images/top.png"></div>
+            <div class="formBox">
+                <div class="iptGroup">
+                    <label for="nameIpt">收货人姓名：</label>
+                    <div class="iptBox"><input type="text" id="nameIpt" class="ipt"></div>
+                </div>
+                <div class="iptGroup">
+                    <label for="mobileIpt">手机号码：</label>
+                    <div class="iptBox"><input type="text" id="mobileIpt" class="ipt"></div>
+                </div>
+                <div class="iptGroup">
+                    <label for="addIpt">收货地址：</label>
+                    <div class="iptBox alt"><textarea id="addIpt" class="ipt"></textarea></div>
+                </div>
+                <div class="iptGroup">
+                    <label for="zipIpt">邮政编码：</label>
+                    <div class="iptBox"><input type="text" id="zipIpt" class="ipt"></div>
+                </div>
+            </div>
+            <a href="javascript:;" class="submitBtn"><img src="images/submitBtn.png"></a>
+        </div>
+        <div class="congrate hidden">
+            <div class="congrateImg"><img src="images/congrate.png"></div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        var btnLock = false;
+        init();
+
+        function init() {
+            setFS();
+            bindEvents();
+        }
+
+        function bindEvents() {
+            $(".submitBtn").on("click", function() {
+                if(!btnLock) {
+                    submit();
+                }
+            });
+
+            /*$(".backBtn").on("click", function() {
+                $(".main").show();
+                $(".congrate").hide();
+                WeixinJSBridge.call('closeWindow');
+            });*/
+        }
+
+        function submit() {
+            btnLock = true;
+            var name = $("#nameIpt").val();
+            var mobile = $("#mobileIpt").val();
+            var address = $("#addIpt").val();
+            var zip = $("#zipIpt").val();
+            if(!!name && !!address && !!zip && /^(13|14|15|17|18)\d{9}$/.test(mobile)) {
+                $(".main").hide();
+                $(".congrate").show();
+                btnLock = false;
+            } else {
+                btnLock = false;
+                diyAlert("请填写格式正确的领奖信息");
+            }
+        }
+
+        function setFS() {
+            fontSize  = window.screen.width / 32 > 20? 20 : window.screen.width / 32;
+            document.getElementsByTagName("html")[0].setAttribute("style", "font-size:"+fontSize+"px");
+        }
+
+        function diyAlert(_html, callback) {
+            $("body").append('<div class="diyAlertBg absolute" style=height:'+$(document).height()+'px></div><div class="diyAlaertText fixed" style=top:'+($(window).height()/2-35)+'px><div class="htmlAlert">'+_html+'</div><a href="javascript:;" class="block diyAlertClose">好</a></div>');
+            diyAlertClose(callback);
+        }
+
+        function diyAlertClose(callback) {
+            $(".diyAlertClose").on("click",function(){
+                $(".diyAlertBg, .diyAlaertText").remove();
+                if(typeof callback == 'function') {
+                    callback();
+                }
+            });
+        }
+    </script>
+</body>
+</html>

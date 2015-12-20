@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="zh-cmn-Hans" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="zh-cmn-Hans" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="zh-cmn-Hans" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="zh-cmn-Hans" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="author" content="zoverdoser, zoverdoser@gmail.com">
+    <title></title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
+    <meta content="telephone=no,address=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="width=640, user-scalable=no">
+    <script src="js/viewport.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script>
+        var webPath = "http://140821fg0374demo.umaman.com/";
+        var server_time = 1434012332;
+        var gameID = "";
+        var openid = '';
+
+        function initShare() {
+            //
+        }
+    </script>
+</head>
+<body>
+    <div id="loading" class="wrapper">
+        <div class="loadingBox act">
+            <div class="loadingImg"><img src="images/bottle.png"></div>
+            <div class="water"><img src="images/water.png"></div>
+            <div class="percentageBox">
+                <div class="text">消气准备中...</div>
+                <div class="process"><span id="processNum">0</span>%</div>
+            </div>
+        </div>
+    </div>
+    <div id="thumb" class="wrapper hidden">
+        <div class="thumbImg">
+            <div class="face"></div>
+            <div class="face"></div>
+            <div class="face"></div>
+            <div class="face"></div>
+            <div class="face"></div>
+        </div>
+        <a href="javascript:;" class="startBtn"><img src="images/startBtn.png"></a>
+        <a href="javascript:;" class="helpBtn"><img src="images/help.png"></a>
+        <div class="logo"></div>
+        <div class="pop hidden">
+            <div class="ruleBox hidden">
+                <div class="logo"></div>
+                <a href="javascript:;" class="closeBtn"></a>
+                <div class="ruleTitle"><img src="images/ruleTitle.png"></div>
+                <div class="ruleTextBox">
+                    <img src="images/ruleText.png">
+                </div>
+                <a href="javascript:;" class="knowBtn"><img src="images/knowBtn2.png"></a>
+            </div>
+        </div>
+    </div>
+    <div id="game" class="wrapper alt">
+        <div class="logo"></div>
+        <div class="gamePane">
+            <div class="topBox">
+                <div class="gameText"><img src="images/gameText.png"></div>
+                <div class="emoBox">
+                    <canvas id="emoCanvas" width="309" height="210"></canvas>
+                </div>
+            </div>
+            <div class="gameBoard">
+                <div class="score boardText">0000</div>
+                <div class="time boardText">00:30</div>
+            </div>
+            <div class="canvasBox">
+                <canvas id="gameCanvas" width="582" height="484"></canvas>
+            </div>
+        </div>
+        <div class="pop">
+            <div class="introBox">
+                <div class="introImg"><img src="images/intro.png"></div>
+                <a href="javascript:;" class="knowBtn"><img src="images/knowBtn.png"></a>
+            </div>
+        </div>
+    </div>
+    <div id="result" class="hidden">
+        <div class="wrapper">
+            <div class="logo"></div>
+            <a href="javascript:;" class="rankBtn"><img src="images/rankBtn.png"></a>
+            <div class="resultImg">
+                <div class="resultBox">
+                    <div class="score"></div>
+                    <div class="beat"></div>
+                </div>
+                <div class="textBox">
+                    <div class="text"></div>
+                </div>
+                <div class="stars">
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                </div>
+            </div>
+            <a href="javascript:;" class="replayBtn"><img src="images/replayBtn.png"></a>
+            <a href="javascript:;" class="showOffBtn"><img src="images/showOffBtn.png"></a>
+            <a href="http://weixin.schwarzkopfclub.com.cn/activity/second" class="shopBtn"><img src="images/goBtn.png"></a>
+        </div>
+        <div class="pop hidden">
+            <div class="shareBox">
+                <div class="shareText"><img src="images/shareText.png"></div>
+            </div>
+        </div>
+    </div>
+    <div id="rank" class="wrapper hidden">
+        <div class="logo"></div>
+        <div class="content">
+            <div class="myRankBox">
+                <div class="amount"></div>
+                <div class="rankNum"></div>
+            </div>
+            <div class="thead"></div>
+            <div class="rankListBox">
+                <ul class="rankList"></ul>
+            </div>
+            <div class="scrollHint"><img src="images/scrollHint.png"></div>
+            <a href="javascript:;" class="backBtn"><img src="images/backBtn.png"></a>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/createjs.min.js"></script>
+    <script src="js/movieclip.js"></script>
+    <script src="js/sanxiao.js?1"></script>
+    <script src="js/emo.js"></script>
+    <script src="js/buzz.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+    </script>
+    <script src="js/main.js"></script>
+    <script>
+        function afterShare() {
+            $.getJSON(webPath + "tag/index/mark?jsonpcallback=?", {identifyId:openid, tags:"消消乐分享好友"}, function(data) {
+                //alert(1)
+            });
+            $.getJSON(webPath + "activity/index/share", { FromUserName: openid, type: '游戏' }, function() {
+                //alert(2)
+            })
+        }
+    </script>
+</body>
+</html>

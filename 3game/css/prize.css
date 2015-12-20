@@ -1,0 +1,99 @@
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+::-webkit-scrollbar {width: 0;}
+.hidden {
+    display: none;
+}
+img {
+    width: 100%;
+}
+.fixed {
+    position: fixed;
+}
+.absolute {position: absolute;}
+.diyAlertBg{left:0px;top:0px;height: 100%;width: 100%;background: rgba(0,0,0,0.5);z-index: 99998;}
+.diyAlaertText{width: 80%;left:10%;top:0px;text-align: center;color:#000;background: #fff;border-radius: 0.5rem;z-index: 99999; font-size: 1.4rem;}
+.diyAlaertText .htmlAlert{ line-height: 2.2rem;padding:2rem 0;letter-spacing: -1px;}
+.diyAlaertText .diyAlertClose{line-height: 3.5rem;border-top: 0.1rem solid #ccc;height: 3.5rem;color:#2a87e8;display: block;}
+.wrapper {
+    min-width: 320px;
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+    background: -webkit-radial-gradient(center, ellipse cover, #ffffff 0%,#9fd6d7 100%);
+}
+.logo {
+    position: absolute;
+    width: 5.2rem;
+    height: 3.05rem;
+    top: 5%;
+    left: 5%;
+    background: url(../images/logo.png) no-repeat;
+    background-size: cover;
+    margin-top: -1.5rem;
+}
+#prize .main, #prize .congrate {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+#prize .main .topImg {
+    width: 76.5625%;
+    margin: 0 auto;
+}
+#prize .main .formBox {
+    margin-top: 2.25rem;
+    margin-left: -3%;
+    font-size: 1rem;
+    color: #000;
+}
+#prize .main .formBox .iptGroup {
+    margin-bottom: 2rem;
+}
+#prize .main .formBox .iptGroup label {
+    width: 6.5rem;
+    display: inline-block;
+    text-align: right;
+}
+#prize .main .formBox .iptGroup .iptBox {
+    display: inline-block;
+    width: 57%;
+    position: relative;
+    border-bottom: 1px solid #f48279;
+}
+#prize .main .formBox .iptGroup .iptBox.alt {
+    border: 0;
+    height: 120px;
+}
+#prize .main .formBox .iptGroup .iptBox .ipt {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: transparent;
+    display: inline-block;
+}
+#prize .main .formBox .iptGroup .iptBox .ipt#addIpt {
+    border: 1px solid #f48279;
+    width: 100%;
+    height: 100%;
+}
+#prize .main .submitBtn {
+    width: 37.65625%;
+    display: block;
+    margin: 2.5rem auto 0 auto;
+}
+#prize .congrate .congrateImg {
+    width: 84.84375%;
+    margin: auto;
+}
+#prize .congrate .backBtn {
+    display: block;
+    width: 37.8125%;
+    margin: 5rem auto 0 auto;
+}

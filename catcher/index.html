@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="zh-cmn-Hans" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="zh-cmn-Hans" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="zh-cmn-Hans" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="zh-cmn-Hans" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="zoverdoser" content="zoverdoser,zoverdoser@gmail.com">
+    <title>首页</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
+    <script src="js/viewport.js"></script>
+    <meta content="telephone=no,address=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body id="game">
+    <div class="wrapper loading">
+        <div class="logo"><img src="images/logo.png"></div>
+        <a href="#" class="buyBtn"><img src="images/buyBtn.png"></a>
+        <div class="loadingImg"></div>
+        <div class="progress">
+            <div class="progressBox"></div>
+            <div class="progressBar"></div>
+        </div>
+        <div class="loadProgress"><span id="progress">0</span>%</div>
+    </div>
+    <div class="wrapper index hidden">
+        <canvas id="indexCanvas" width="640" height="1040"></canvas>
+    </div>
+    <div class="wrapper option hidden">
+        <div class="bgBox"></div>
+        <div class="cardBox">
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+        </div>
+        <div class="topLayer">
+            <div class="logo"><img src="images/logo.png"></div>
+            <a href="javascript:;" class="buyBtn"><img src="images/buyBtn.png"></a>
+            <div class="arrow left"><img src="images/arrowLeft.png"></div>
+            <div class="arrow right"><img src="images/arrowRight.png"></div>
+            <div class="legoBox">
+                <div class="lego"><img src="images/lego0.png"></div>
+                <div class="lego"><img src="images/lego1.png"></div>
+                <div class="lego"><img src="images/lego2.png"></div>
+            </div>
+            <div class="note"><img src="images/note.png"></div>
+            <div class="btnBox">
+                <a href="javascript:;" class="viewBtn btn"><img src="images/viewBtn.png"></a>
+                <a href="javascript:;" class="mineBtn btn"><img src="images/mineBtn.png"></a>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper view hidden">
+        <div class="logo"><img src="images/logo.png"></div>
+        <div class="buyBtn"><img src="images/buyBtn.png"></div>
+        <div class="pane">
+            <div class="swipe" id="slider">
+                <div class="swipe-wrap">
+                    <div class="swipeBox"></div>
+                    <div class="swipeBox"></div>
+                    <div class="swipeBox"></div>
+                    <div class="swipeBox"></div>
+                    <div class="swipeBox"></div>
+                    <div class="swipeBox"></div>
+                    <div class="swipeBox"></div>
+                    <div class="swipeBox"></div>
+                </div>
+            </div>
+            <div class="arrow left"><img src="images/arrowLeft.png"></div>
+            <div class="arrow right"><img src="images/arrowRight.png"></div>
+            <ul class="dotList">
+                <li class="alt"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <a href="javascript:;" class="backBtn"><img src="images/backBtn.png"></a>
+    </div>
+    <div class="mine wrapper hidden">
+        <div class="logo"><img src="images/logo.png"></div>
+        <div class="buyBtn"><img src="images/buyBtn.png"></div>
+        <div class="container">
+            <div class="minePrize"><img src="images/myPrize.jpg"></div>
+            <div id="prizeSwipe">
+                <div class="swipe-wrap">
+                    <div class="swipeBox">
+                        <div class="couponBox coupon">
+                            <div class="infoBox">
+                                <div class="time">使用时间：2015.05.20-05.28</div>
+                                <div class="note">购乐高玩具单笔消费满500元可消费</div>
+                                <div class="code">编码：1234567</div>
+                            </div>
+                            <a href="javascript:;" class="useBtn btn">使&nbsp;&nbsp;&nbsp;&nbsp;用</a>
+                        </div>
+                        <div class="couponBox coupon">
+                            <div class="infoBox">
+                                <div class="time">使用时间：2015.06.08-06.28</div>
+                                <div class="note">购乐高玩具单笔消费满400元可消费</div>
+                                <div class="code">编码：1234567</div>
+                            </div>
+                            <a href="javascript:;" class="usedBtn btn">已使用</a>
+                        </div>
+                        <div class="couponBox dlc">
+                            <div class="infoBox">
+                                <div class="code">编码：1234567</div>
+                            </div>
+                            <a href="javascript:;" class="getBtn btn">领&nbsp;&nbsp;&nbsp;&nbsp;取</a>
+                        </div>
+                        <div class="couponBox blocks">
+                            <div class="infoBox">
+                                <div class="code">编码：1234567</div>
+                            </div>
+                            <a href="javascript:;" class="gotBtn btn">已领取</a>
+                        </div>
+                    </div>
+                    <div class="swipeBox">
+                        <div class="couponBox"></div>
+                        <div class="couponBox"></div>
+                    </div>
+                </div>
+            </div>
+            <ul class="dotList"></ul>
+            <a href="javascript:;" class="backBtn"><img src="images/backBtn.png"></a>
+            <div class="foText"><img src="images/foText.png"></div>
+            <div class="foBtn"><img src="images/foBtn.png"></div>
+        </div>
+        <div class="pop hidden">
+            <div class="uesCoupon popBox hidden">
+                <h1>确认使用？</h1>
+                <p class="note">请店员输入店号后确认，一经确认无法恢复哦~</p>
+                <div class="iptBox store"><input type="text" id="storeNoIpt" placeholder="输入店号"></div>
+                <a href="javascript:;" class="assureBtn btn">确&nbsp;&nbsp;认</a>
+                <a href="javascript:;" class="cancelBtn btn">取&nbsp;&nbsp;消</a>
+                <div class="codeText"><img src="images/codeText.png"></div>
+                <div class="iptBox code"><input type="text" id="couponNo" readonly="readonly" value="12345678901234567890"></div>
+                <div class="copyNote"><img src="images/copyNote.png"></div>
+                <a href="javascript:;" class="clickBuyBtn btn">点击购买</a>
+                <div class="useNote m500 "><img src="images/500note.png"></div>
+                <div class="useNote m400 hidden"><img src="images/400note.png"></div>
+                <div class="popText"><img src="images/popText.png"></div>
+            </div>
+            <div class="getBox popBox hidden">
+                <h1>恭喜您</h1>
+                <p class="note">运气也太好了吧！真羡慕您获得了&lt;<span id="prizeName">乐高拼砌包</span>&gt;一套，<br>请到指定门店换取~</p>
+                <div class="iptBox"><input type="text" id="nameIpt" placeholder="姓&nbsp;&nbsp;&nbsp;名"></div>
+                <div class="iptBox"><input type="text" id="mobileIpt" placeholder="手&nbsp;&nbsp;&nbsp;机"></div>
+                <div class="iptBox"><a href="javascript:;" class="chooseStore">选择领取门店</a></div>
+                <a href="javascript:;" class="submitBtn btn">提&nbsp;&nbsp;交</a>
+            </div>
+            <div class="addressBox popBox hidden">
+                <div id="addressSwipe">
+                    <div class="swipe-wrap">
+                        <div class="swipeBox">
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                        </div>
+                        <div class="swipeBox">
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                            <a href="javascript:;" class="address"><p>上海 上海正大广场</p><p>爱哪儿哪儿</p></a>
+                        </div>
+                    </div>
+                </div>
+                <ul class="dotList"></ul>
+                <a href="javascript:;" class="backBtn"><img src="images/backBtn.png"></a>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper game hidden">
+        <div class="noticeBox">
+            <div class="notice hidden">
+                <div class="hint clearfix hidden">
+                    <div class="hintBox"><img src="images/hint0_0_0.png"></div>
+                    <div class="hintBox"><img src="images/hint0_0_1.png"></div>
+                    <div class="hintBox"><img src="images/hint0_0_2.png"></div>
+                    <div class="hintBox"><img src="images/hint0_0_3.png"></div>
+                    <div class="hintBox"><img src="images/hint0_0_4.png"></div>
+                    <div class="hintBox"><img src="images/hint0_0_5.png"></div>
+                </div>
+                <div class="hint clearfix hidden">
+                    <div class="hintBox"><img src="images/hint0_1_0.png"></div>
+                    <div class="hintBox"><img src="images/hint0_1_1.png"></div>
+                    <div class="hintBox"><img src="images/hint0_1_2.png"></div>
+                    <div class="hintBox"><img src="images/hint0_1_3.png"></div>
+                    <div class="hintBox"><img src="images/hint0_1_4.png"></div>
+                    <div class="hintBox"><img src="images/hint0_1_5.png"></div>
+                </div>
+            </div>
+            <div class="notice hidden">
+                <div class="hint clearfix hidden">
+                    <div class="hintBox"><img src="images/hint1_0_0.png"></div>
+                    <div class="hintBox"><img src="images/hint1_0_1.png"></div>
+                    <div class="hintBox"><img src="images/hint1_0_2.png"></div>
+                    <div class="hintBox"><img src="images/hint1_0_3.png"></div>
+                    <div class="hintBox"><img src="images/hint1_0_4.png"></div>
+                    <div class="hintBox"><img src="images/hint1_0_5.png"></div>
+                </div>
+                <div class="hint clearfix hidden">
+                    <div class="hintBox"><img src="images/hint1_1_0.png"></div>
+                    <div class="hintBox"><img src="images/hint1_1_1.png"></div>
+                    <div class="hintBox"><img src="images/hint1_1_2.png"></div>
+                    <div class="hintBox"><img src="images/hint1_1_3.png"></div>
+                    <div class="hintBox"><img src="images/hint1_1_4.png"></div>
+                    <div class="hintBox"><img src="images/hint1_1_5.png"></div>
+                </div>
+            </div>
+            <div class="notice hidden">
+                <div class="hint clearfix hidden">
+                    <div class="hintBox"><img src="images/hint2_0_0.png"></div>
+                    <div class="hintBox"><img src="images/hint2_0_1.png"></div>
+                    <div class="hintBox"><img src="images/hint2_0_2.png"></div>
+                    <div class="hintBox"><img src="images/hint2_0_3.png"></div>
+                    <div class="hintBox"><img src="images/hint2_0_4.png"></div>
+                    <div class="hintBox"><img src="images/hint2_0_5.png"></div>
+                </div>
+                <div class="hint clearfix hidden">
+                    <div class="hintBox"><img src="images/hint2_1_0.png"></div>
+                    <div class="hintBox"><img src="images/hint2_1_1.png"></div>
+                    <div class="hintBox"><img src="images/hint2_1_2.png"></div>
+                    <div class="hintBox"><img src="images/hint2_1_3.png"></div>
+                    <div class="hintBox"><img src="images/hint2_1_4.png"></div>
+                    <div class="hintBox"><img src="images/hint2_1_5.png"></div>
+                </div>
+            </div>
+        </div>
+        <div class="barBox">
+            <div class="bar hidden">
+                <div class="round"></div>
+                <div class="digitBox">
+                    <div class="digit d4"></div>
+                    <div class="digit d5"></div>
+                </div>
+            </div>
+            <div class="bar hidden">
+                <div class="round"></div>
+                <div class="digitBox">
+                    <div class="digit d4"></div>
+                    <div class="digit d5"></div>
+                </div>
+            </div>
+            <div class="bar hidden">
+                <div class="round"></div>
+                <div class="digitBox">
+                    <div class="digit d4"></div>
+                    <div class="digit d5"></div>
+                </div>
+            </div>
+        </div>
+        <div class="canvasBox">
+            <canvas id="gameCanvas" width="640" height="1040"></canvas>
+        </div>
+        <div class="pop hidden">
+            <div class="logo"><img src="images/logo.png"></div>
+            <a href="javascript:;" class="buyBtn"><img src="images/buyBtn.png"></a>
+            <a href="javascript:;" class="viewBtn"><img src="images/viewBtn.png"></a>
+            <a href="javascript:;" class="mineBtn"><img src="images/mineBtn.png"></a>
+            <div class="successBox round1 hidden">
+                <div class="box">
+                    <a href="javascript:;" class="continueBtn"><img src="images/continueBtn.png"></a>
+                </div>
+            </div>
+            <div class="successBox round2 hidden">
+                <div class="box">
+                    <p>据说20%的人享受了80%的成功，恭喜你成为<br>幸运的20%，获得<span id="prizeName">XXX</span>奖品！快去“我的奖品”中看看八！</p>
+                    <a href="javascript:;" class="retryBtn"><img src="images/retry.jpg"></a>
+                    <a href="javascript:;" class="callBtn"><img src="images/callBtn.jpg"></a>
+                </div>
+                <div class="arrow left"><img src="images/redArrowLeft.png"></div>
+                <div class="arrow right"><img src="images/redArrowRight.png"></div>
+                <div id="popSlider" class="slider">
+                    <div class="swipe-wrap">
+                        <div class="swipeBox"></div>
+                        <div class="swipeBox"></div>
+                        <div class="swipeBox"></div>
+                        <div class="swipeBox"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="failedBox round1 hidden">
+                <div class="box">
+                    <a href="javascript:;" class="retryBtn"><img src="images/retry.jpg"></a>
+                    <a href="javascript:;" class="callBtn"><img src="images/callBtn.jpg"></a>
+                </div>
+            </div>
+            <div class="failedBox round2 hidden">
+                <div class="box">
+                    <a href="javascript:;" class="retryBtn"><img src="images/retry.jpg"></a>
+                    <a href="javascript:;" class="callBtn"><img src="images/callBtn.jpg"></a>
+                </div>
+            </div>
+            <div class="exceedBox hidden">
+                <div class="box">
+                    <a href="javascript:;" class="retryBtn"><img src="images/retry.jpg"></a>
+                    <a href="javascript:;" class="callBtn"><img src="images/callBtn.jpg"></a>
+                </div>
+            </div>
+        </div>
+        <div class="sharePop hidden"></div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="js/createjs.min.js"></script>
+    <script src="js/movieclip.js"></script>
+    <script src="js/swipe.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/light.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/share.js"></script>
+</body>
+</html>
