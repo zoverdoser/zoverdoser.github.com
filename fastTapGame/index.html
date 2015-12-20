@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="zh-cmn-Hans" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="zh-cmn-Hans" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="zh-cmn-Hans" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="zh-cmn-Hans" class="no-js" manifest="cache.manifest"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="zoverdoser" content="zoverdoser,zoverdoser@gmail.com">
+    <title>营养泥去哪儿！当然从欧洲原产地，直达中国宝宝的餐桌！比比谁承包了欧洲更大的农场，你，敢来挑战吗？</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta content="telephone=no,address=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div class="shareLogo"><img src="images/head.jpg"></div>
+    <div class="wrapper" id="index">
+        <div class="logo"><img src="images/logo_small.png"></div>
+        <div class="sloganBox">
+            <div class="slogan"><img src="images/slogan.png"></div>
+        </div>
+        <div class="ladybug"><img src="images/ladybug.png"></div>
+        <div class="startBtnBottom">
+            <a href="javascript:;" class="startBtn" trackingBtn="trackingBtn" tracking_type="多美滋游戏" tracking_info="首页开始" tracking_event="click"><img src="images/btn_top.png"></a>
+        </div>
+        <div class="grass"><img src="images/grass.png"></div>
+        <a href="javascript:;" class="ruleBtn" trackingBtn="trackingBtn" tracking_type="多美滋游戏" tracking_info="活动规则" tracking_event="click"><img src="images/ruleBtn.png"></a>
+    </div>
+    <div id="intro" class="hidden" ontouchmove="event.preventDefault()">
+        <div class="slider">
+            <ul class="slideBox">
+                <li class="slide">
+                    <img src="images/paneA.png?1">
+                    <div class="dialog"><img src="images/dialogA.png"></div>
+                </li>
+                <li class="slide">
+                    <img src="images/paneB.png">
+                    <div class="dialog"><img src="images/dialogB.png"></div>
+                </li>
+                <li class="slide">
+                    <img src="images/paneC.png">
+                    <div class="dialog"><img src="images/dialogC.png"></div>
+                    <a href="javascript:;" class="playBtn"><img src="images/playBtn.png"></a>
+                </li>
+            </ul>
+            <div class="dotBox">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper hidden" id="game">
+        <div id="progress">
+            <div class="loadingBox">
+                <div class="loadingImg"><img src="images/loadingImg.png"></div>
+                <div class="progressPane">
+                    <div class="progressBar"></div>
+                </div>
+            </div>
+        </div>
+        <canvas id="gameCanvas" width="640" height="1040"></canvas>
+        <div class="note hidden"><img src="images/note.png"></div>
+    </div>
+    <div id="result">
+        <div class="resultBox">
+            <div class="results">
+                <div class="result result1 hidden">
+                    <div class="star"><img src="images/star.png"></div>
+                    <div class="pane"><img src="images/pane1.png"></div>
+                    <div class="dialog"><img src="images/dialog1.png"></div>
+                </div>
+                <div class="result result2 hidden">
+                    <div class="pane"><img src="images/pane2.png?1" alt=""></div>
+                    <div class="dialog"><img src="images/dialog2.png" alt=""></div>
+                </div>
+                <div class="result result3 hidden">
+                    <div class="pane"><img src="images/pane3.png" alt=""></div>
+                    <div class="dialog"><img src="images/dialog3.png" alt=""></div>
+                </div>  
+            </div>
+            <div class="statistics">
+                <div class="distance">
+                    <span class="no"></span><span class="no"></span><span class="no"></span>
+                </div>
+                <div class="collect">
+                    <span class="no"></span><span class="no"></span>
+                </div>
+                <div class="ticketText">
+                    <img class="get" src="images/ticketText1.png">
+                    <img class="lose" src="images/ticketText2.png">
+                </div>
+                <div class="ticketValue">
+                    <span class="no"></span><span class="no"></span>
+                </div>
+            </div>
+        </div>
+        <div class="btns">
+            <a class="btn shareBtn" href="javascript:;" trackingBtn="trackingBtn" tracking_type="多美滋游戏" tracking_info="分享按钮" tracking_event="click"><img src="images/shareBtn.png"></a>
+            <a class="btn replayBtn" href="javascript:;" trackingBtn="trackingBtn" tracking_type="多美滋游戏" tracking_info="再玩一次" tracking_event="click"><img src="images/replayBtn.png"></a>
+        </div>
+        <div class="grass"><img src="images/grass.png"></div>
+        <div class="logo"><img src="images/logo_small.png"></div>
+        <div class="shareImg"><img src="images/share.png"></div>
+    </div>
+    <div id="rule" class="hidden">
+        <div class="head"><img src="images/rule.png"></div>
+        <a href="javascript:;" class="closeBtn"><img src="images/closeBtn.png"></a>
+        <div class="ruleContainer">
+            <div class="ruleBox">
+                <img src="images/ruleText.png?1">
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/createjs.min.js"></script>
+    <script src="js/movieclip.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?52c1e884a85ee46cf1c61ac556cc91e6";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</body>
+</html>
