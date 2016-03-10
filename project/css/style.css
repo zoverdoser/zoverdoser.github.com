@@ -254,6 +254,7 @@ a:focus {
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
+    text-align: left;
     font-size: 0;
     -webkit-overflow-scrolling: touch;
 }
