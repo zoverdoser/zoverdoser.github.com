@@ -248,11 +248,25 @@ a:focus {
 #index .cards .card .cardTop .tag.pro::after {
     background: #165bb1;
 }
-#index .cards .card .img {
-    height: 13.75rem;
+#index .cards .card .imgBox {
+    height: 11rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    font-size: 0;
+    -webkit-overflow-scrolling: touch;
+}
+#index .cards .card .imgBox .img {
+    display: inline-block;
+    width: 12.4rem;
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    margin-right: 0.3rem;
+}
+#index .cards .card .imgBox .img:last-child {
+    margin-right: 0;
 }
 #index .cards .card .topic, #index .cards .card .text {
     font-size: 0.6rem;
