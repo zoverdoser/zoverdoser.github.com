@@ -8,7 +8,25 @@ webpackJsonp([0,1],[
 	    var diyLoading = __webpack_require__(4);
 	    var diyAlert = __webpack_require__(5);
 
-	    initSwipe();
+	    init();
+
+	    function init() {
+	        initSwipe();
+	        initSwitch();
+	    }
+
+	    function initSwitch() {
+	        var wrappers = $(".wrapper");
+	        var scrollTops = [0, 0, 0, 0];
+	        var tabs = $(".fixedTabs .tab");
+	        tabs.on("click", function() {
+	            var switchIndex = $(this).index();
+	            scrollTops[tabs.filter('.on').index()] = $('body').scrollTop();
+	            $(this).addClass('on').siblings('.tab').removeClass('on');
+	            wrappers.addClass('hidden').eq(switchIndex).removeClass('hidden');
+	            $('body').scrollTop(scrollTops[switchIndex])
+	        });
+	    }
 
 	    function initSwipe(){
 	        var container = $(".bannerBox");
