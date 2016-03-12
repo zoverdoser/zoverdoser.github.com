@@ -19,7 +19,7 @@ webpackJsonp([0,1],[
 	        var wrappers = $(".wrapper");
 	        var scrollTops = [0, 0, 0, 0];
 	        var tabs = $(".fixedTabs .tab");
-	        tabs.on("click", function() {
+	        tabs.on("touchstart", function() {
 	            var switchIndex = $(this).index();
 	            scrollTops[tabs.filter('.on').index()] = $('body').scrollTop();
 	            $(this).addClass('on').siblings('.tab').removeClass('on');
