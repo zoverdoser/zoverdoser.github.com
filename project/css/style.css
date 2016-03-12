@@ -271,11 +271,11 @@ a:focus {
     margin-right: 0;
 }
 #index .cards .card .topic, #index .cards .card .text {
-    font-size: 0.6rem;
+    font-size: 0.4rem;
     text-align: left;
     width: 15rem;
     margin: 0 auto;
-    line-height: 0.825rem;
+    line-height: 0.6rem;
 }
 #index .cards .card .topic {
     margin-top: 0.3rem;
