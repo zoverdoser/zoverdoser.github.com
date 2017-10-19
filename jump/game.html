@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <base href="">
+    <title></title>
+    <meta name="format-detection" content="telephone=no, address=no, email=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="js/viewport.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script>
+        var serverPath = 'http://160307fg0004demo.itg.site/';
+        var name = 'zoverdoser';
+        var headImgURL = 'http://wx.qlogo.cn/mmopen/PiajxSqBRaEKUvskOZzV5ic99AmXpvD3z8hb8ZCSrP3BoRryEmoBDticseozFsFjib9iafhOicpda07s4HwQ21dToBTA/0';
+        window.onerror = function(a, b, c, d) {
+            alert(JSON.stringify(a) + ' ' + JSON.stringify(b) + ' ' + JSON.stringify(c) + ' ' + JSON.stringify(d));
+        };
+        var level = 0;
+        var isScan = 0;
+    </script>
+</head>
+<body>
+    <div class="wrapper" id="game">
+        <div class="canvasBox"><canvas id="canvas" width="640" height="1040"></canvas></div>
+        <div class="userBox">
+            <div class="name"></div>
+        </div>
+        <div class="handWave"></div>
+        <div class="hand"><img src="images/hand.png" alt=""></div>
+        <div class="indicator">
+            <div class="clock"><img src="images/clock.png" alt=""></div>
+            <div class="timeBar">
+                <div class="time"></div>
+            </div>
+            <div class="processBar">
+                <div class="process"></div>
+            </div>
+            <div class="score">0</div>
+        </div>
+        <div class="currentItem">
+            <div class="double hidden"><img src="images/iconDouble.png" alt=""></div>
+            <div class="slow hidden"><img src="images/iconSlow.png" alt=""></div>
+            <div class="frozen hidden"><img src="images/iconFrozen.png" alt=""></div>
+            <div class="immortal hidden"><img src="images/iconImmortal.png" alt=""></div>
+        </div>
+        <div class="getItem">
+            <div class="double hidden"><img src="images/itemDouble.png" alt=""></div>
+            <div class="slow hidden"><img src="images/itemSlow.png" alt=""></div>
+            <div class="frozen hidden"><img src="images/itemFrozen.png" alt=""></div>
+            <div class="immortal hidden"><img src="images/itemImmortal.png" alt=""></div>
+        </div>
+        <div class="pop fail hidden">
+            <div class="failPop">
+                <img src="images/fail.png" alt="">
+                <a class="retryBtn"></a>
+            </div>
+        </div>
+        <div class="pop success hidden">
+            <div class="successPop">
+                <img src="images/success.png" alt="">
+                <div class="score"></div>
+                <div class="level"></div>
+                <a class="nextBtn"></a>
+            </div>
+        </div>
+        <div class="pop infiniteEnd hidden">
+            <div class="infiniteEndPop">
+                <img src="images/infiniteEnd.png" alt="">
+                <div class="text"></div>
+                <div class="score"></div>
+                <div class="percent"></div>
+                <a class="closeEnd"></a>
+                <div class="btns">
+                    <a class="slotBtn btn"><img src="images/slotBtn.png" alt=""></a>
+                    <a class="retryBtn btn"><img src="images/retryBtn.png" alt=""></a>
+                    <a class="shareBtn btn"><img src="images/shareBtn.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+        <div class="pop share hidden"></div>
+        <div class="startHint"><img src="images/startHint.png" alt=""></div>
+    </div>
+    <div class="wrapper hidden" id="scan">
+        <img src="images/scanBg.jpg" alt="">
+        <a class="myPrizeBtn"><img src="images/myPrizeBtn.png" alt=""></a>
+        <a class="ruleBtn"><img src="images/ruleBtn.png" alt=""></a>
+        <a class="scanBtn"></a>
+        <a class="back2AllBtn"></a>
+    </div>
+    <div class="pop slot hidden">
+        <div class="none hidden">
+            <img src="images/none.png" alt="">
+            <a class="retryBtn"></a>
+            <a class="indexBtn"></a>
+        </div>
+        <div class="medal hidden">
+            <img src="images/medal.png" alt="">
+            <a class="siteBtn"></a>
+        </div>
+        <div class="allUnlock hidden">
+            <img src="images/allUnlock.png" alt="">
+            <a class="slotBtn"></a>
+        </div>
+        <div class="streetView hidden">
+            <img src="images/streetView.png" alt="">
+            <div class="code"></div>
+            <a class="getBtn"></a>
+        </div>
+        <div class="block hidden">
+            <img src="images/block.png" alt="">
+            <div class="code"></div>
+            <a class="getBtn"></a>
+        </div>
+        <div class="pop streetViewSubmit submit hidden">
+            <div class="submitPop">
+                <div class="ipt name"><input type="text" id="nameIpt1"></div>
+                <div class="ipt mobile"><input type="tel" id="mobileIpt1"></div>
+                <div class="ipt address"><input type="text" id="addressIpt1"></div>
+                <a class="submitBtn"><img src="images/submitBtn.png" alt=""></a>
+                <div class="note"></div>
+            </div>
+        </div>
+        <div class="pop blockSubmit submit hidden">
+            <div class="submitPop">
+                <div class="ipt name"><input type="text" id="nameIpt2"></div>
+                <div class="ipt mobile"><input type="tel" id="mobileIpt2"></div>
+                <div class="ipt province">
+                    <select id="provinceSlct"></select>
+                </div>
+                <div class="ipt shop">
+                    <select id="shopSlct"></select>
+                </div>
+                <a class="submitBtn"><img src="images/submitBtn.png" alt=""></a>
+                <div class="note"></div>
+            </div>
+        </div>
+    </div>
+    <div class="pop hidden" id="gamePop">
+        <canvas class="firstCanvas" id="firstCanvas" width="640" height="1040"></canvas>
+        <a class="myPrizeBtn"><img src="images/myPrizeBtn.png" alt=""></a>
+        <a class="ruleBtn"><img src="images/ruleBtn.png" alt=""></a>
+        <div class="all">
+            <div class="slogan"><img src="images/slogan.png" alt=""></div>
+            <div class="dice1"><img src="images/dice1.png" alt=""></div>
+            <div class="dice2"><img src="images/dice2.png" alt=""></div>
+            <div class="allBox">
+                <ul class="dollBox">
+                    <li class="doll doll0"><img src="images/d00.png" alt=""></li>
+                    <li class="doll doll1"><img src="images/d01.png" alt=""></li>
+                    <li class="doll doll2"><img src="images/d02.png" alt=""></li>
+                    <li class="doll doll3"><img src="images/d03.png" alt=""></li>
+                    <li class="doll doll4"><img src="images/d04.png" alt=""></li>
+                    <li class="doll doll5"><img src="images/d05.png" alt=""></li>
+                    <li class="doll doll6"><img src="images/d06.png" alt=""></li>
+                    <li class="doll doll7"><img src="images/d07.png" alt=""></li>
+                    <li class="doll doll8"><img src="images/d08.png" alt=""></li>
+                    <li class="doll doll9"><img src="images/d09.png" alt=""></li>
+                    <li class="doll doll10"><img src="images/d10.png" alt=""></li>
+                    <li class="doll doll11"><img src="images/d11.png" alt=""></li>
+                    <li class="doll doll12"><img src="images/d12.png" alt=""></li>
+                    <li class="doll doll13"><img src="images/d13.png" alt=""></li>
+                    <li class="doll doll14"><img src="images/d14.png" alt=""></li>
+                    <li class="doll doll15"><img src="images/d15.png" alt=""></li>
+                </ul>
+                <ul class="textBox">
+                    <li><img src="images/text0.png" alt=""></li>
+                    <li><img src="images/text1.png" alt=""></li>
+                    <li><img src="images/text2.png" alt=""></li>
+                    <li></li>
+                    <li><img src="images/text4.png" alt=""></li>
+                    <li><img src="images/text5.png" alt=""></li>
+                    <li><img src="images/text6.png" alt=""></li>
+                    <li></li>
+                    <li><img src="images/text8.png" alt=""></li>
+                    <li><img src="images/text9.png" alt=""></li>
+                    <li><img src="images/text10.png" alt=""></li>
+                    <li></li>
+                    <li><img src="images/text12.png" alt=""></li>
+                    <li><img src="images/text13.png" alt=""></li>
+                    <li><img src="images/text14.png" alt=""></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="coupon"><img src="images/coupon.png" alt=""></div>
+            <a class="nextBtn"><img src="images/nextBtn.png" alt=""></a>
+            <div class="pop pass hidden">
+                <div class="passPop">
+                    <img src="images/pass.png" alt="">
+                    <a class="close"></a>
+                </div>
+            </div>
+            <div class="pop dollNote hidden">
+                <div class="dollNotePop">
+                    <img src="images/dollNotePop.png" alt="">
+                    <a class="close"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pop rule hidden">
+        <div class="rulePop"><img src="images/rulePop.png" alt=""><a class="close"></a></div>
+    </div>
+    <div class="unlock wrapper pop hidden">
+        <canvas id="unlockCanvas" width="640" height="1040"></canvas>
+    </div>
+    <script type="text/javascript" src="dist/js/common.js"></script>
+    <script type="text/javascript" src="dist/js/game.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?5fadfaef48b2f57db4a56315dbc58644";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</body>
+</html>

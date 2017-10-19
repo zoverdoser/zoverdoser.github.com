@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>p3</title>
+
+<script src="http://code.createjs.com/easeljs-0.8.1.min.js"></script>
+<script src="http://code.createjs.com/tweenjs-0.6.1.min.js"></script>
+<script src="http://code.createjs.com/movieclip-0.8.1.min.js"></script>
+<script src="http://code.createjs.com/preloadjs-0.6.1.min.js"></script>
+<script src="p3.js"></script>
+
+<script>
+var canvas, stage, exportRoot;
+
+function init() {
+	canvas = document.getElementById("canvas");
+	images = images||{};
+	ss = ss||{};
+
+	var loader = new createjs.LoadQueue(false);
+	loader.addEventListener("fileload", handleFileLoad);
+	loader.addEventListener("complete", handleComplete);
+loader.loadFile({src:"images/p3/p3_atlas_.json", type:"spritesheet", id:"p3_atlas_"}, true);
+loader.loadFile({src:"images/p3/p3_atlas_2.json", type:"spritesheet", id:"p3_atlas_2"}, true);
+loader.loadFile({src:"images/p3/p3_atlas_3.json", type:"spritesheet", id:"p3_atlas_3"}, true);
+	loader.loadManifest(lib.properties.manifest);
+}
+
+function handleFileLoad(evt) {
+	if (evt.item.type == "image") { images[evt.item.id] = evt.result; }
+}
+
+function handleComplete(evt) {
+	var queue = evt.target;
+	ss["p3_atlas_"] = queue.getResult("p3_atlas_");
+	ss["p3_atlas_2"] = queue.getResult("p3_atlas_2");
+	ss["p3_atlas_3"] = queue.getResult("p3_atlas_3");
+	exportRoot = new lib.p3();
+
+	stage = new createjs.Stage(canvas);
+	stage.addChild(exportRoot);
+	stage.update();
+
+	createjs.Ticker.setFPS(lib.properties.fps);
+	createjs.Ticker.addEventListener("tick", stage);
+}
+</script>
+</head>
+
+<body onload="init();" style="background-color:#D4D4D4">
+	<canvas id="canvas" width="640" height="1040" style="background-color:#FFFFFF"></canvas>
+</body>
+</html>

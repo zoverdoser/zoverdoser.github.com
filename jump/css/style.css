@@ -1,0 +1,1361 @@
+img {
+    width: 100%;
+    display: block;
+}
+.hidden {
+	display: none;
+}
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #221e29;
+}
+canvas {
+    width: 100%;
+    height: 100%;
+}
+.wrapper {
+    width: 640px;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.wrapper {
+    height: auto;
+}
+.pop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: rgba(0,0,0,.8);
+}
+.myPrizeBtn {
+    position: absolute;
+    width: 125px;
+    height: 39px;
+    top: 44px;
+    right: 72px;
+    z-index: 1;
+}
+.ruleBtn {
+    position: absolute;
+    width: 39px;
+    height: 41px;
+    top: 42px;
+    right: 21px;
+    z-index: 1;
+}
+#index {
+    background: url(../images/indexBg.jpg) center no-repeat;
+    background-size: cover;
+}
+.startHint {
+    position: absolute;
+    width: 235px;
+    height: 31px;
+    left: 0;
+    right: 0;
+    bottom: 69px;
+    margin: auto;
+    z-index: 1;
+    -webkit-animation: flash 0.7s infinite alternate;
+    animation: flash 0.7s infinite alternate;
+}
+@-webkit-keyframes flash {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+@keyframes flash {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+.rulePop {
+    position: absolute;
+    width: 603px;
+    height: 884px;
+    top: 0;
+    bottom: 0;
+    left: 35px;
+    margin: auto;
+}
+.rulePop .close {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 25px;
+    right: 41px;
+}
+.animateShow {
+    -webkit-animation: none 1s infinite forwards;
+    animation: none 1s infinite forwards;
+}
+.userBox {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 23px;
+    left: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    font-size: 25px;
+    -webkit-animation: none 1s infinite forwards;
+    animation: none 1s infinite forwards;
+}
+.userBox .name {
+    position: absolute;
+    top: 0;
+    left: 70px;
+    line-height: 60px;
+    text-align: left;
+    white-space: nowrap;
+    color: #000;
+}
+#game {
+    opacity: 0;
+    overflow: hidden;
+}
+#game .hand {
+    position: absolute;
+    width: 252px;
+    height: 355px;
+    bottom: 0;
+    right: 0;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    display: none;
+    pointer-events: none;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    -webkit-animation: handTap 2s infinite alternate;
+    animation: handTap 2s infinite alternate;
+}
+@-webkit-keyframes handTap {
+    0% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    20% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    80% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    100% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+}
+@keyframes handTap {
+    0% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    20% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    80% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    100% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+}
+#game .handWave {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 10px solid rgba(255,255,255,1);
+    border-radius: 100%;
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    pointer-events: none;
+    display: none;
+    bottom: 303px;
+    right: 187px;
+    -webkit-animation: shrink 0.6s infinite;
+    animation: shrink 0.6s infinite;
+}
+@-webkit-keyframes shrink {
+    from {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+@keyframes shrink {
+    from {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+#game .currentItem {
+    position: absolute;
+    top: 205px;
+    right: 107px;
+    -webkit-animation: shine 0.7s infinite alternate;
+    animation: shine 0.7s infinite alternate;
+    pointer-events: none;
+}
+@-webkit-keyframes shine {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.7;
+    }
+}
+@keyframes shine {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.7;
+    }
+}
+#game .getItem {
+    position: absolute;
+    top: 100%;
+    left: 100px;
+    pointer-events: none;
+}
+#game .getItem.double .double,
+#game .getItem.slow .slow,
+#game .getItem.frozen .frozen,
+#game .getItem.immortal .immortal {
+    -webkit-animation: floatUp 3s 1 forwards;
+    animation: floatUp 3s 1 forwards;
+}
+@-webkit-keyframes floatUp {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+    80% {
+        -webkit-transform: translateY(-600px);
+        transform: translateY(-600px);
+        opacity: 0.75;
+    }
+    100% {
+        -webkit-transform: translateY(-700px);
+        transform: translateY(-700px);
+        opacity: 0;
+    }
+}
+@keyframes floatUp {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+    80% {
+        -webkit-transform: translateY(-600px);
+        transform: translateY(-600px);
+        opacity: 0.75;
+    }
+    100% {
+        -webkit-transform: translateY(-700px);
+        transform: translateY(-700px);
+        opacity: 0;
+    }
+}
+#game .currentItem > div {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+#game .getItem > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+}
+#game .currentItem .double {
+    width: 43px;
+    height: 30px;
+    top: 7px;
+}
+#game .currentItem .slow {
+    width: 40px;
+    height: 46px;
+}
+#game .currentItem .frozen {
+    width: 43px;
+    height: 47px;
+}
+#game .currentItem .immortal {
+    width: 43px;
+    height: 50px;
+}
+#game .currentItem.double .double,
+#game .currentItem.slow .slow,
+#game .currentItem.frozen .frozen,
+#game .currentItem.immortal .immortal,
+#game .getItem.double .double,
+#game .getItem.slow .slow,
+#game .getItem.frozen .frozen,
+#game .getItem.immortal .immortal {
+    display: block;
+}
+#game .getItem .double {
+    width: 69px;
+    height: 100px;
+}
+#game .getItem .slow {
+    width: 70px;
+    height: 105px;
+}
+#game .getItem .frozen {
+    width: 94px;
+    height: 141px;
+}
+#game .getItem .immortal {
+    width: 96px;
+    height: 134px;
+}
+#game .indicator {
+    position: absolute;
+    width: 332px;
+    height: 53px;
+    top: 198px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    pointer-events: none;
+}
+#game .indicator .clock {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 53px;
+    height: 53px;
+    z-index: 1;
+}
+#game .indicator .processBar {
+    width: 292px;
+    height: 5px;
+    position: absolute;
+    top: 4px;
+    left: 34px;
+}
+#game .indicator .processBar .process {
+    position: absolute;
+    width: 0;
+    height: 100%;
+    min-width: 0;
+    max-width: 100%;
+    top: 0;
+    left: 0;
+    background: #ff008b;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+#game .indicator .timeBar {
+    position: absolute;
+    width: 294px;
+    height: 31px;
+    right: 0;
+    top: 12px;
+    border: 4px solid #fff;
+    border-radius: 14px;
+    background: #fff;
+}
+#game .indicator .timeBar .time {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    max-width: 100%;
+    background-color: #ff008b;
+    border-radius: 14px;
+    background-image: -webkit-linear-gradient(-45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-image: -o-linear-gradient(-45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-image: linear-gradient(-45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    -webkit-background-size: 40px 40px;
+    background-size: 40px 40px;
+}
+#game .indicator .score {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 100%;
+    font-size: 52px;
+    line-height: 50px;
+    font-weight: bold;
+    color: #ff008b;
+}
+#game .startBtn {
+    position: absolute;
+    width: 211px;
+    height: 84px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+#game .pop.fail .failPop {
+    position: absolute;
+    width: 349px;
+    height: 535px;
+    top: 0;
+    left: 136px;
+    bottom: 0;
+    margin: auto;
+}
+#game .pop.fail .failPop .retryBtn {
+    position: absolute;
+    width: 211px;
+    height: 77px;
+    bottom: 1px;
+    left: 57px;
+    right: 0;
+    margin: auto;
+}
+#game .pop.success .successPop {
+    position: absolute;
+    width: 447px;
+    height: 641px;
+    top: 0;
+    left: 100px;
+    bottom: 0;
+    margin: auto;
+}
+#game .pop.success .successPop .score {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    font-size: 45px;
+    color: #fff;
+    top: 168px;
+}
+#game .pop.success .successPop .score::before {
+    content: '达到';
+}
+#game .pop.success .successPop .score::after {
+    content: '分!';
+}
+#game .pop.success .successPop .level{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    font-size: 30px;
+    color: #dadada;
+    top: 240px;
+}
+#game .pop.success .successPop .level::before {
+    content: '通过第';
+}
+#game .pop.success .successPop .level::after {
+    content: '关挑战';
+}
+#game .pop.success .successPop .nextBtn {
+    position: absolute;
+    width: 211px;
+    height: 77px;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+#game .pop.end .endPop {
+    position: absolute;
+    width: 416px;
+    height: 460px;
+    top: 0;
+    left: 123px;
+    bottom: 0;
+    margin: auto;
+}
+#game .pop.end .endPop .score {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    font-size: 45px;
+    color: #fcef3c;
+    top: -76px;
+}
+#game .pop.end .endPop .score::before {
+    content: '你获得了';
+}
+#game .pop.end .endPop .score::after {
+    content: '分!';
+}
+#game .pop.end .endPop .slotBtn {
+    position: absolute;
+    width: 211px;
+    height: 77px;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#gamePop > div {
+    position: absolute;
+}
+#gamePop .all {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+#gamePop .all .slogan {
+    position: absolute;
+    width: 570px;
+    height: 172px;
+    top: 107px;
+    left: 43px;
+}
+@-webkit-keyframes floating {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    100% {
+        -webkit-transform: translateY(20%);
+        transform: translateY(20%);
+    }
+}
+@keyframes floating {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    100% {
+        -webkit-transform: translateY(20%);
+        transform: translateY(20%);
+    }
+}
+#gamePop .all .dice1 {
+    position: absolute;
+    width: 76px;
+    height: 72px;
+    top: 349px;
+    left: 20px;
+    -webkit-animation: floating 2s infinite alternate;
+    animation: floating 2s infinite alternate;
+}
+#gamePop .all .dice2 {
+    position: absolute;
+    width: 83px;
+    height: 82px;
+    top: 95px;
+    right: 62px;
+    -webkit-animation: floating 3.7s infinite alternate;
+    animation: floating 3.7s infinite alternate;
+}
+#gamePop .all .allBox {
+    position: absolute;
+    width: 640px;
+    height: 833px;
+    left: 0;
+    top: 204px;
+}
+#gamePop .all .allBox::after {
+content: '';
+    position: absolute;
+    width: 100%;
+    height: 600px;
+    left: 0;
+    bottom: 0;
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 40%,rgba(0,0,0,.8) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 40%,rgba(0,0,0,.8) 100%);
+    z-index: 17;
+    pointer-events: none;
+}
+#gamePop .all .allBox .doll {
+    position: absolute;
+    -webkit-filter: grayscale(1);
+}
+#gamePop .all .allBox .doll.on {
+    -webkit-filter: none;
+}
+#gamePop .all .allBox .doll.on.current {
+    transform-origin: center bottom;
+    -webkit-animation: peak 0.8s infinite alternate;
+    animation: peak 0.8s infinite alternate;
+}
+@-webkit-keyframes peak {
+    0% {
+        -webkit-transform: rotate(3deg);
+        transform: rotate(3deg);
+    }
+    100% {
+        -webkit-transform: rotate(-3deg);
+        transform: rotate(-3deg);
+    }
+}
+@keyframes peak {
+    0% {
+        -webkit-transform: rotate(3deg);
+        transform: rotate(3deg);
+    }
+    100% {
+        -webkit-transform: rotate(-3deg);
+        transform: rotate(-3deg);
+    }
+}
+#gamePop .all .allBox .doll0 {
+    width: 97px;
+    height: 144px;
+    z-index: 1;
+    top: 0;
+    left: 62px;
+}
+#gamePop .all .allBox .doll1 {
+    width: 103px;
+    height: 187px;
+    z-index: 4;
+    top: 88px;
+    left: 163px;
+}
+#gamePop .all .allBox .doll2 {
+    width: 155px;
+    height: 300px;
+    z-index: 10;
+    top: 251px;
+    left: 315px;
+}
+#gamePop .all .allBox .doll3 {
+    width: 184px;
+    height: 373px;
+    z-index: 15;
+    top: 445px;
+    left: 117px;
+}
+#gamePop .all .allBox .doll4 {
+    width: 115px;
+    height: 189px;
+    z-index: 3;
+    top: 28px;
+    left: 267px;
+}
+#gamePop .all .allBox .doll5 {
+    width: 141px;
+    height: 250px;
+    z-index: 6;
+    top: 97px;
+    left: 307px;
+}
+#gamePop .all .allBox .doll6 {
+    width: 120px;
+    height: 165px;
+    z-index: 2;
+    top: 74px;
+    right: 114px;
+}
+#gamePop .all .allBox .doll7 {
+    width: 220px;
+    height: 334px;
+    z-index: 13;
+    top: 448px;
+    right: 18px;
+}
+#gamePop .all .allBox .doll8 {
+    width: 137px;
+    height: 283px;
+    z-index: 11;
+    top: 239px;
+    left: 169px;
+}
+#gamePop .all .allBox .doll9 {
+    width: 142px;
+    height: 226px;
+    z-index: 8;
+    top: 162px;
+    left: 92px;
+}
+#gamePop .all .allBox .doll10 {
+    width: 122px;
+    height: 236px;
+    z-index: 5;
+    top: 173px;
+    right: 128px;
+}
+#gamePop .all .allBox .doll11 {
+    width: 292px;
+    height: 441px;
+    z-index: 16;
+    bottom: 0;
+    left: 195px;
+}
+#gamePop .all .allBox .doll12 {
+    width: 148px;
+    height: 261px;
+    z-index: 12;
+    top: 288px;
+    left: 62px;
+}
+#gamePop .all .allBox .doll13 {
+    width: 167px;
+    height: 273px;
+    z-index: 9;
+    top: 295px;
+    right: 67px;
+}
+#gamePop .all .allBox .doll14 {
+    width: 134px;
+    height: 284px;
+    z-index: 7;
+    top: 122px;
+    left: 210px;
+}
+#gamePop .all .allBox .doll15 {
+    width: 241px;
+    height: 298px;
+    z-index: 14;
+    top: 438px;
+    left: 6px;
+}
+#gamePop .all .allBox .textBox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 17;
+    pointer-events: none;
+}
+#gamePop .all .allBox .textBox li {
+    position: absolute;
+    display: none;
+    pointer-events: none;
+}
+#gamePop .all .allBox .textBox li.on {
+    display: block;
+    -webkit-animation: enhance .7s infinite alternate;
+    animation: enhance .7s infinite alternate;
+}
+@-webkit-keyframes enhance {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    100% {
+        -webkit-transform: translateY(3%);
+        transform: translateY(3%);
+    }
+}
+@keyframes enhance {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    100% {
+        -webkit-transform: translateY(3%);
+        transform: translateY(3%);
+    }
+} 
+#gamePop .all .allBox .textBox li:nth-child(1) {
+    width: 362px;
+    height: 242px;
+    top: 53px;
+    left: 0;
+}
+#gamePop .all .allBox .textBox li:nth-child(2) {
+    width: 401px;
+    height: 227px;
+    top: 114px;
+    left: 0;
+}
+#gamePop .all .allBox .textBox li:nth-child(3) {
+    width: 392px;
+    height: 225px;
+    top: 79px;
+    right: 59px;
+}
+#gamePop .all .allBox .textBox li:nth-child(5) {
+    width: 392px;
+    height: 218px;
+    top: 59px;
+    left: 112px;
+}
+#gamePop .all .allBox .textBox li:nth-child(6) {
+    width: 392px;
+    height: 218px;
+    top: 166px;
+    left: 168px;
+}
+#gamePop .all .allBox .textBox li:nth-child(7) {
+    width: 364px;
+    height: 218px;
+    top: 91px;
+    right: 0;
+}
+#gamePop .all .allBox .textBox li:nth-child(9) {
+    width: 392px;
+    height: 218px;
+    top: 357px;
+    right: 206px;
+}
+#gamePop .all .allBox .textBox li:nth-child(10) {
+    width: 357px;
+    height: 238px;
+    top: 185px;
+    left: 0;
+}
+#gamePop .all .allBox .textBox li:nth-child(11) {
+    width: 372px;
+    height: 221px;
+    top: 24px;
+    right: 0;
+}
+#gamePop .all .allBox .textBox li:nth-child(13) {
+    width: 353px;
+    height: 248px;
+    top: 328px;
+    left: 0;
+}
+#gamePop .all .allBox .textBox li:nth-child(14) {
+    width: 367px;
+    height: 273px;
+    top: 322px;
+    right: 0;
+}
+#gamePop .all .allBox .textBox li:nth-child(15) {
+    width: 392px;
+    height: 277px;
+    top: 143px;
+    left: 28px;
+}
+#gamePop .all .nextBtn {
+    position: absolute;
+    width: 197px;
+    height: 74px;
+    right: 30px;
+    bottom: 27px;
+    z-index: 20;
+}
+#gamePop .all .nextBtn.alt {
+    bottom: 214px;
+}
+#gamePop .all .coupon {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 37px;
+    margin: auto;
+    width: 562px;
+    height: 131px;
+    z-index: 20;
+}
+.pop .passPop {
+    position: absolute;
+    width: 512px;
+    height: 378px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.pop .passPop .close,
+.pop .dollNotePop .close {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 23px;
+    right: 19px;
+}
+.pop .dollNotePop {
+    position: absolute;
+    width: 512px;
+    height: 290px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.pop.slot {
+    background: url(../images/slotBg.jpg) center top no-repeat;
+    background-size: cover;
+}
+.pop.slot .none {
+    position: absolute;
+    width: 300px;
+    height: 585px;
+    top: 267px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.pop.slot .none .retryBtn {
+    position: absolute;
+    width: 200px;
+    height: 70px;
+    left: 0;
+    right: 0;
+    bottom: 93px;
+    margin: auto;
+}
+.pop.slot .none .indexBtn {
+    position: absolute;
+    width: 200px;
+    height: 77px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.pop.slot .medal {
+    position: absolute;
+    width: 640px;
+    height: 802px;
+    top: 120px;
+    left: 0;
+    margin: auto;
+}
+.pop.slot .medal .siteBtn {
+    position: absolute;
+    width: 207px;
+    height: 70px;
+    bottom: 14px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.pop.slot .allUnlock {
+    position: absolute;
+    width: 610px;
+    height: 745px;
+    top: 155px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.pop.slot .allUnlock .slotBtn {
+    position: absolute;
+    width: 200px;
+    height: 77px;
+    bottom: 0;
+    left: 11px;
+    right: 0;
+    margin: auto;
+}
+.pop.slot .streetView {
+    position: absolute;
+    width: 530px;
+    height: 770px;
+    top: 130px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.pop.slot .streetView .code {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 87px;
+    font-size: 18px;
+    color: #fff;
+}
+.pop.slot .streetView .getBtn {
+    position: absolute;
+    width: 200px;
+    height: 77px;
+    bottom: 0;
+    left: 11px;
+    right: 0;
+    margin: auto;
+}
+.pop.slot .block {
+    position: absolute;
+    width: 625px;
+    height: 720px;
+    top: 180px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.pop.slot .block .code {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 137px;
+    font-size: 18px;
+    color: #fff;
+}
+.pop.slot .block .getBtn {
+    position: absolute;
+    width: 200px;
+    height: 77px;
+    bottom: 0;
+    left: 11px;
+    right: 0;
+    margin: auto;
+}
+.pop .submitPop {
+    position: absolute;
+    width: 428px;
+    height: 561px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.pop.blockSubmit .submitPop {
+    height: 600px;
+}
+.pop .submitPop .ipt {
+    width: 428px;
+    height: 66px;
+    background: rgba(58,55,91,.9);
+    border: 1px solid #6e6c8e;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin: 0 auto 39px auto;
+    position: relative;
+}
+.pop .submitPop .ipt::before {
+    content: "";
+    position: absolute;
+    height: 32px;
+    width: 77px;
+    right: 338px;
+    top: 0;
+    bottom: -8px;
+    margin: auto;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.pop .submitPop .ipt.name::before {
+    background-image: url(../images/labelName.png);
+}
+.pop .submitPop .ipt.mobile::before {
+    background-image: url(../images/labelMobile.png);
+}
+.pop .submitPop .ipt.address::before {
+    background-image: url(../images/labelAddress.png);
+}
+.pop .submitPop .ipt.province::before {
+    background-image: url(../images/labelProvince.png);
+}
+.pop .submitPop .ipt.shop::before {
+    background-image: url(../images/labelShop.png);
+}
+.pop .submitPop .ipt input[type=text],
+.pop .submitPop .ipt input[type=tel],
+.pop .submitPop .ipt select {
+    -webkit-appearance: none;
+    position: absolute;
+    width: 315px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    border: none;
+    background: none;
+    font-size: 28px;
+    color: #fff;
+}
+.pop .submitPop .note {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.pop.streetViewSubmit .submitPop .note {
+    width: 457px;
+    height: 38px;
+    background-image: url(../images/deliveryNote.png);
+}
+.pop.blockSubmit .submitPop .note {
+    width: 411px;
+    height: 76px;
+    background-image: url(../images/prizeNote.png);
+}
+.pop .submitPop .submitBtn {
+    position: absolute;
+    width: 197px;
+    height: 74px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+#scan, #prize, #prize {
+    position: relative;
+}
+#scan .scanBtn {
+    position: absolute;
+    width: 200px;
+    height: 74px;
+    bottom: 210px;
+    left: 226px;
+}
+#scan .back2AllBtn {
+    position: absolute;
+    width: 200px;
+    height: 74px;
+    bottom: 117px;
+    left: 226px;
+}
+#prize .content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+#prize .content .prizeTicket {
+    position: absolute;
+    width: 533px;
+    left: 54px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#prize .content .prizeTicket.streetView {
+    top: 90px;
+    height: 227px;
+    background-image: url(../images/unlock0.png);
+}
+#prize .content .prizeTicket.coupon {
+    top: 331px;
+    height: 466px;
+    background-image: url(../images/unlock1.png);
+}
+#prize .content .prizeTicket.block {
+    top: 811px;
+    height: 180px;
+    background-image: url(../images/unlock2.png);
+}
+#prize .content .prizeTicket.on {
+    background-image: none;
+}
+#prize .content .prizeTicket.got::before {
+    content: '已领取';
+    position: absolute;
+    font-size: 18px;
+    color: #fff;
+    bottom: 10px;
+    left: 56px;
+}
+
+.pop.getBlock {
+    background: url(../images/slotBg.jpg) center no-repeat;
+    background-size: cover;
+}
+.pop.getBlock .getBlockPop {
+    position: absolute;
+    width: 625px;
+    height: 763px;
+    top: 167px;
+    left: 0;
+}
+#shopIpt {
+    position: absolute;
+    width: 336px;
+    height: 48px;
+    top: 494px;
+    left: 152px;
+    border: 0;
+    background: none;
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+}
+#shopIpt::-webkit-input-placeholder {
+    text-align: center;
+}
+.pop.getBlock .getBlockPop .getBtn {
+    position: absolute;
+    width: 220px;
+    height: 70px;
+    top: 620px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.pop.getBlock .getBlockPop .note {
+    padding: 10px;
+    font-size: 20px;
+    background: #fff;
+    color: #000;
+    position: absolute;
+    width: 100%;
+    bottom: -24px;
+    left: 0;
+}
+@-webkit-keyframes none {
+    from {
+        -webkit-transform: translate3d(0, 0, 1);
+        transform: translate3d(0, 0, 1);
+        z-index: 17;
+    }
+    to {
+        -webkit-transform: translate3d(0, 0, 1);
+        transform: translate3d(0, 0, 1);
+        z-index: 17;
+    }
+}
+#prize .content .prizeTicket.coupon .showCodeBtn {
+    position: absolute;
+    width: 130px;
+    height: 50px;
+    top: 400px;
+    left: 100px;
+}
+#prize .content .prizeTicket.coupon .siteBtn {
+    position: absolute;
+    width: 130px;
+    height: 50px;
+    top: 400px;
+    right: 100px;
+}
+.pop.code .codePop {
+    position: absolute;
+    width: 500px;
+    height: 349px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: url(../images/codePop.png) center no-repeat;
+    background-size: cover;
+}
+.pop.code .codePop .close {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 10px;
+    right: 10px;
+}
+#codeIpt {
+    position: absolute;
+    width: 372px;
+    height: 47px;
+    left: 64px;
+    top: 125px;
+    border: 0;
+    background: none;
+    text-align: center;
+    color: #fff;
+    font-size: 26px;
+}
+.pop.code .codePop .storeBtn {
+    position: absolute;
+    width: 313px;
+    height: 70px;
+    bottom: 39px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.pop.infiniteEnd .infiniteEndPop {
+    position: absolute;
+    width: 495px;
+    height: 559px;
+    top: 27px;
+    right: 22px;
+}
+.pop.infiniteEnd .infiniteEndPop .score {
+    position: absolute;
+    color: #fcef3c;
+    font-size: 45px;
+    top: 150px;
+    width: 595px;
+    left: -87px;
+    text-align: center;
+}
+.pop.infiniteEnd .infiniteEndPop .score::before {
+    content: '你获得了';
+}
+.pop.infiniteEnd .infiniteEndPop .score::after {
+    content: '分！';
+}
+.pop.infiniteEnd .infiniteEndPop .percent {
+    font-size: 30px;
+    color: #fcef3c;
+    position: absolute;
+    width: 40px;
+    top: 216px;
+    left: 142px;
+    text-align: center;
+}
+.pop.infiniteEnd .infiniteEndPop .text {
+    position: absolute;
+    width: 431px;
+    height: 61px;
+    left: -16px;
+    top: 287px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.pop.infiniteEnd .infiniteEndPop.win .text {
+    background-image: url(../images/winText.png);
+}
+.pop.infiniteEnd .infiniteEndPop.lose .text {
+    background-image: url(../images/loseText.png);
+}
+.pop.infiniteEnd .infiniteEndPop .btns {
+    margin: 30px 0 0 -121px;
+}
+.pop.infiniteEnd .infiniteEndPop .btns .btn {
+    display: block;
+    width: 197px;
+    height: 74px;
+    margin: 0 auto 14px auto;
+}
+.pop.infiniteEnd .infiniteEndPop .closeEnd {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 50px;
+    height: 50px;
+}
+.pop.infiniteEnd .infiniteEndPop.win .btns .retryBtn {
+    display: none;
+}
+.pop.infiniteEnd .infiniteEndPop.lose .btns .retryBtn {
+    display: block;
+}
+.pop.share {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url(../images/shareMask.png) center no-repeat;
+    background-size: cover;
+    background-color: transparent;
+}
