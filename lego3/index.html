@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <base href="">
+    <title></title>
+    <meta name="format-detection" content="telephone=no, address=no, email=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="js/viewport.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="js/prefixfree.min.js"></script>
+    <script src="js/conic-gradient.js"></script>
+    <script>
+        var serverPath = 'http://jdyeventdemo.jdytoy.com/';
+        var nickname = 'nickname';
+        var avatar = 'http://wx.qlogo.cn/mmopen/PiajxSqBRaEKUvskOZzV5ic99AmXpvD3z8hb8ZCSrP3BoRryEmoBDticseozFsFjib9iafhOicpda07s4HwQ21dToBTA/132';
+        var level = 0;
+        var isShop = 0;
+    </script>
+</head>
+<body>
+    <div class="wrapper" id="index">
+        <div class="gameCanvas">
+            <canvas width="640" height="1040" id="indexCanvas"></canvas>
+        </div>
+    </div>
+    <!-- <div class="wrapper hidden" id="result">
+        <img class="bg0" src="images/resultBg0.jpg" alt="">
+        <img class="bg1" src="images/resultBg1.jpg" alt="">
+        <a class="prizeBtn"></a>
+        <a class="ruleBtn"></a>
+        <div class="score"></div>
+        <div class="currentScore"></div>
+        <div class="proccessBox">
+            <div class="proccess" style="width: 0%;"></div>
+        </div>
+        <div class="leftScore"></div>
+        <a class="lotteryBtn"></a>
+    </div> -->
+    <div class="pop result hidden">
+        <div class="resultPop">
+            <img src="images/resultPop.png" alt="">
+            <div class="score"></div>
+            <div class="combo"></div>
+            <div class="percent"></div>
+            <p class="proccess">目前<span class="version"></span>助力的总完成数为<span class="num"></span></p>
+            <a class="lotteryBtn"></a>
+            <a class="shareBtn"></a>
+        </div>
+    </div>
+    <div class="wrapper hidden" id="lottery">
+        <img src="images/lotteryBg.jpg" alt="">
+        <a class="prizeBtn"></a>
+        <a class="ruleBtn"></a>
+        <div data-id="277" class="prize coupon hidden">
+            <img src="images/got/got_coupon.png" alt="">
+            <div class="score"></div>
+            <a class="openPrize"></a>
+        </div>
+        <div data-id="298,302" class="prize pack hidden">
+            <img src="images/got/got_pack.png" alt="">
+            <div class="score"></div>
+            <a class="getShopPrize"></a>
+        </div>
+
+        <div data-id="299,303" class="prize hidden">
+            <img src="images/got/got_201709_2.png" alt="">
+            <div class="score"></div>
+            <a class="getPrize"></a>
+        </div>
+        <div data-id="300,304" class="prize hidden">
+            <img src="images/got/got_201709_3.png" alt="">
+            <div class="score"></div>
+            <a class="getPrize"></a>
+        </div>
+        <div data-id="301,305" class="prize hidden">
+            <img src="images/got/got_201709_4.png" alt="">
+            <div class="score"></div>
+            <a class="getPrize"></a>
+        </div> 
+    </div>
+    <div class="pop rule hidden">
+        <div class="rulePop">
+            <img src="images/rulePop.png" alt="">
+            <a class="close"></a>
+        </div>
+    </div>
+    <div class="pop blocks hidden">
+        <div class="blocksPop">
+            <img src="images/blocksPop.png" alt="">
+            <div class="blockNum"></div>
+            <a class="siteBtn"></a>
+            <a class="againBtn"></a>
+            <a class="close"></a>
+        </div>
+    </div>
+    <div class="pop submitShop hidden">
+        <div class="submitShopPop">
+            <img src="images/submitShopPop.png" alt="">
+            <a class="siteBtn"></a>
+            <a class="againBtn"></a>
+            <a class="close"></a>
+        </div>
+    </div>
+    <div class="pop submitExpress hidden">
+        <div class="submitExpressPop">
+            <img src="images/submitExpressPop.png" alt="">
+            <a class="siteBtn"></a>
+            <a class="againBtn"></a>
+            <a class="close"></a>
+        </div>
+    </div>
+    <div class="pop express hidden">
+        <div class="expressPop">
+            <img src="images/expressPop.png" alt="">
+            <input type="text" class="ipt" id="nameExpressIpt" placeholder="请输入姓名">
+            <input type="tel" class="ipt" id="mobileExpressIpt" placeholder="请输入手机号码">
+            <input type="text" class="ipt" id="addressExpressIpt" placeholder="请输入收货地址">
+            <a class="submitBtn"></a>
+            <a class="close"></a>
+        </div>
+    </div>
+    <div class="pop shop hidden">
+        <div class="shopPop">
+            <img src="images/shopPop.png" alt="">
+            <input type="text" class="ipt" id="nameShopIpt" placeholder="请输入姓名">
+            <input type="tel" class="ipt" id="mobileShopIpt" placeholder="请输入手机号码">
+            <select id="cityIpt" class="ipt"></select>
+            <select id="shopIpt" class="ipt"></select>
+            <a class="submitBtn"></a>
+            <a class="close"></a>
+        </div>
+    </div>
+    <div class="pop find hidden">
+        <div class="findPop">
+            <div class="radarTitle"><img src="images/radarTitle.png" alt=""></div>
+            <div class="radar">
+                <div class="progress">
+                    <div class="half right">
+                        <div class="circleBox">
+                            <div class="circle-wrapper">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="half left">
+                        <div class="circleBox">
+                            <div class="circle-wrapper">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rotatingLight"></div>
+                <div class="wheel"><img src="images/wheel.png" alt=""></div>
+                <div class="center"></div>
+            </div>
+            <div class="radarTip"><img src="images/radarTip.png" alt=""></div>
+            <div class="note"></div>
+            <div class="hint"><img src="images/hint.png" alt=""></div>
+        </div>
+    </div>
+    <div class="pop run hidden">
+        <div class="runPop">
+            <img src="images/runPop.png" alt="">
+        </div>
+    </div>
+    <div class="pop bluetooth hidden">
+        <div class="bluetoothPop">
+            <img src="images/bluetoothPop.png" alt="">
+            <a class="closeBtn"></a>
+            <a class="close"></a>
+        </div>
+    </div>
+    <div class="pop finish hidden">
+        <div class="finishPop">
+            <img src="images/finishPop.png" alt="">
+            <a class="siteBtn"></a>
+            <a class="close"></a>
+        </div>
+    </div>
+    <div class="pop share hidden">
+        <div class="sharePop">
+            <img src="images/sharePop.png" alt="">
+            <a class="close"></a>
+        </div>
+    </div>
+    <script type="text/javascript" src="dist/js/common.js"></script>
+    <script type="text/javascript" src="dist/js/index.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?dbf0aaf6826259d3f595cb597d74967a";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</body>
+</html>

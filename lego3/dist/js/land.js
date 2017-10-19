@@ -1,0 +1,1 @@
+webpackJsonp([2],{0:function(n,i,t){n.exports=t(66)},66:function(n,i,t){(function(n){"use strict";var i=(t(3),t(4),t(5));i.init().done(function(){i.hideOptionMenu()}),n("#land .gameList li a")}).call(i,t(2))}});

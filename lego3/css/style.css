@@ -1,0 +1,916 @@
+img {
+    display: block;
+}
+canvas {
+    width: 100%;
+}
+.hidden {
+    display: none;
+}
+.wrapper {
+    position: relative;
+    max-width: 640px;
+    min-height: 100%;
+    box-sizing: border-box;
+    font-size: 0;
+    margin: auto;
+}
+.pop {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: rgba(0,0,0,.8);
+}
+.pop > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.ipt {
+    width: 356px;
+    font-size: 24px;
+    padding: 13px 0;
+    position: absolute;
+    left: 125px;
+    background: none;
+    margin: 0;
+    border: none;
+    color: #000;
+    -webkit-appearance: none;
+}
+.ipt::-webkit-input-placeholder {
+    color: #9c7b27;
+}
+.prizeBtn {
+    width: 125px;
+    height: 40px;
+    position: absolute;
+    top: 22px;
+    right: 71px;
+}
+.ruleBtn {
+    width: 41px;
+    height: 41px;
+    position: absolute;
+    top: 21px;
+    right: 19px;
+}
+
+body, #index, #shopIndex {
+    background: #000;
+}
+#index .gameCanvas {
+    width: 640px;
+    height: 1040px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.pop.rule .rulePop {
+    width: 562px;
+    height: 795px;
+}
+.pop .close {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.pop.prize .prizePop {
+    width: 537px;
+    height: 936px;
+}
+.pop.prize .prizePop .prizeList {
+    width: 505px;
+    position: absolute;
+    top: 107px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.pop.prize .prizePop .prizeList li {
+    width: 100%;
+    height: 157px;
+    position: relative;
+    margin-bottom: 6px;
+    -webkit-filter: grayscale(1);
+}
+.pop.prize .prizePop .prizeList li.on {
+    -webkit-filter: none;
+}
+.pop.prize .prizePop .prizeList li .btn {
+    display: none;
+    width: 74px;
+    height: 74px;
+    background: #5b2800;
+    border-radius: 100%;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    overflow: hidden;
+    font-size: 18px;
+    color: #fff;
+}
+.pop.prize .prizePop .prizeList li:nth-child(1) .btn {
+    top: 48px;
+}
+.pop.prize .prizePop .prizeList li:nth-child(2) .btn {
+    top: 44px;
+}
+.pop.prize .prizePop .prizeList li:nth-child(3) .btn,
+.pop.prize .prizePop .prizeList li:nth-child(4) .btn,
+.pop.prize .prizePop .prizeList li:nth-child(5) .btn {
+    top: 68px;
+}
+.pop.prize .prizePop .prizeList li.on .btn {
+    display: block;
+}
+.pop.prize .prizePop .prizeList li.on.got .btn::before {
+    content: '已经\A领取';
+}
+.pop.prize .prizePop .prizeList li .btn::before {
+    white-space: pre;
+    width: 100%;
+    position: absolute;
+    top: 17px;
+    left: 0;
+    text-align: center;
+    font-size: 18px;
+    line-height: 20px;
+}
+.pop.prize .prizePop .prizeList li.on .btn::before {
+    content: '立即\A领取';
+}
+.pop.prize .prizePop .prizeList li:nth-child(1) .btn::before {
+    content: '立即\A使用';
+}
+.pop.prize .prizePop .prizeList li.on.get:nth-child(2) .btn::before {
+    content: '立即\A兑换';
+}
+
+#result.level0 .bg0,
+#result.level1 .bg1 {
+    display: block;
+}
+#result.level0 .bg1,
+#result.level1 .bg0,
+#result .bg1 {
+    display: none;
+}
+#result .score {
+    font-size: 36px;
+    color: #fff;
+    width: 116px;
+    position: absolute;
+    top: 220px;
+    left: 230px;
+    text-align: center;
+}
+#result .currentScore {
+    color: #380501;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 730px;
+    left: 0;
+    display: none;
+}
+#result .currentScore::before {
+    content: '全部小伙伴共计为乐高英雄助力';
+}
+#result .currentScore::after {
+    content: '颗粒';
+}
+#result .leftScore {
+    color: #380501;
+    font-size: 22px;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 791px;
+    left: 0;
+}
+#result .leftScore::before {
+    content: '还有';
+}
+#result .leftScore::after {
+    content: '%尚未完成，明天再来哟～';
+}
+#result.level1 .currentScore,
+#result.level1 .leftScore {
+    color: #ffcd06;
+}
+#result .proccessBox {
+    width: 497px;
+    height: 18px;
+    position: absolute;
+    top: 766px;
+    left: 69px;
+}
+#result .proccessBox .proccess {
+    max-width: 100%;
+    min-width: 0%;
+    height: 100%;
+    position: relative;
+    border-radius: 4px;
+    background-color: #f2b01e;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+}
+#result .proccessBox .proccess::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: url(../images/stripes.png) 0 0 repeat, linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+}
+#result .proccessBox .proccess::after {
+    content: '';
+    width: 135px;
+    height: 115px;
+    position: absolute;
+    top: -49px;
+    right: -71px;
+    background: url(../images/light.png) center no-repeat;
+    background-size: cover;
+}
+#result .lotteryBtn {
+    width: 212px;
+    height: 102px;
+    position: absolute;
+    top: 843px;
+    left: 210px;
+}
+
+#lottery .prize {
+    position: absolute;
+    top: 941px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+#lottery .prize > a {
+    width: 213px;
+    height: 102px;
+    position: absolute;
+    bottom: 34px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+#lottery .prize.coupon {
+    width: 528px;
+    height: 764px;
+}
+#lottery .prize.dragon {
+    width: 640px;
+    height: 782px;
+}
+#lottery .prize.pack {
+    width: 528px;
+    height: 764px;
+}
+#lottery .prize.ship {
+    width: 640px;
+    height: 782px;
+}
+#lottery .prize.troll {
+    width: 630px;
+    height: 782px;
+}
+#lottery .prize .score {
+    font-size: 20px;
+    color: #5b2800;
+    font-weight: bold;
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    left: 0;
+    top: 122px;
+}
+/*#lottery .prize.coupon .score {
+    top: 122px;
+    left: 226px;
+}*/
+#lottery .prize.ship .score {
+    top: 119px;
+    left: 279px;
+}
+#lottery .prize.dragon .score {
+    top: 124px;
+    left: 279px;
+}
+#lottery .prize.troll .score {
+    top: 124px;
+    left: 269px;
+}
+/*#lottery .prize.pack .score {
+    top: 122px;
+    left: 225px;
+}*/
+.pop.blocks .blocksPop {
+    width: 541px;
+    height: 739px;
+}
+.pop.blocks .blocksPop .blockNum {
+    font-size: 46px;
+    color: #5b2800;
+    width: 75px;
+    position: absolute;
+    top: 191px;
+    left: 161px;
+    text-align: center;
+    font-style: italic;
+}
+.pop.blocks .blocksPop .againBtn,
+.pop.submitShop .submitShopPop .againBtn,
+.pop.submitExpress .submitExpressPop .againBtn,
+.pop.blocks .blocksPop .siteBtn,
+.pop.submitShop .submitShopPop .siteBtn,
+.pop.submitExpress .submitExpressPop .siteBtn {
+    width: 212px;
+    height: 103px;
+    position: absolute;
+    top: 527px;
+    left: 66px;
+}
+.pop.blocks .blocksPop .againBtn,
+.pop.submitShop .submitShopPop .againBtn,
+.pop.submitExpress .submitExpressPop .againBtn{
+    left: 290px;
+}
+.pop.submitShop .submitShopPop {
+    width: 537px;
+    height: 735px;
+}
+.pop.submitExpress .submitExpressPop {
+    width: 541px;
+    height: 739px;
+}
+.pop.express .expressPop {
+    width: 541px;
+    height: 739px;
+}
+.pop.express .expressPop #nameExpressIpt {
+    top: 192px;
+}
+.pop.express .expressPop #mobileExpressIpt {
+    top: 281px;
+}
+.pop.express .expressPop #addressExpressIpt {
+    top: 367px;
+}
+.pop.express .expressPop .submitBtn {
+    width: 210px;
+    height: 102px;
+    position: absolute;
+    top: 527px;
+    left: 167px;
+}
+.pop.shop .shopPop {
+    width: 537px;
+    height: 735px;
+}
+.pop.shop .shopPop #nameShopIpt {
+    top: 162px;
+}
+.pop.shop .shopPop #mobileShopIpt {
+    top: 238px;
+}
+.pop.shop .shopPop #cityIpt {
+    top: 316px;
+}
+.pop.shop .shopPop #shopIpt {
+    top: 395px;
+}
+.pop.shop .shopPop .submitBtn {
+    width: 210px;
+    height: 102px;
+    position: absolute;
+    top: 526px;
+    left: 165px;
+}
+.pop.find .findPop {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.pop.find .findPop .radar {
+    width: 476px;
+    height: 476px;
+    position: absolute;
+    top: 260px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: 4px solid #5e5d5d;
+    border-radius: 100%;
+    background: #383838;
+    z-index: 9;
+    box-sizing: border-box;
+}
+.pop.find .findPop .radar .wheel {
+    position: absolute;
+    width: 328px;
+    height: 328px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: 12px solid #000;
+    border-radius: 100%;
+    z-index: 2;
+}
+.pop.find .findPop .radar .wheel > img {
+    width: 100%;
+    height: 100%;
+}
+.pop.find .findPop .radar .center {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: rgb(32, 32, 32);
+    border-radius: 100%;
+    -webkit-transition: all 0.1s;
+    transition: all 0.1s;
+    z-index: 3;
+}
+.pop.find .findPop .radar .center::after {
+    content: '';
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: url(../images/radarCenter.png) center no-repeat;
+    background-size: cover;
+}
+.pop.find .findPop .radar .rotatingLight {
+    position: absolute;
+    width: 466px;
+    height: 466px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-animation: spinning 7s infinite linear;
+    animation: spinning 7s infinite linear;
+    border-radius: 100%;
+    background: conic-gradient(rgba(255,198,10,1) 0, rgba(255,198,10,0) 35%, rgba(255,198,10,0) 100%);
+}
+@-webkit-keyframes spinning {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(-360deg);
+        transform: rotate(-360deg);
+    }
+}
+@keyframes spinning {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(-360deg);
+        transform: rotate(-360deg);
+    }
+}
+.pop.find .findPop .radar .progress {
+    position: absolute;
+    width: 352px;
+    height: 352px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 100%;
+    background: #9e9d9d;
+    z-index: 2;
+}
+.pop.find .findPop .radar .progress .half {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    float: right;
+    overflow: hidden;
+}
+.pop.find .findPop .radar .progress .circleBox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.pop.find .findPop .radar .progress .circleBox .circle-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.pop.find .findPop .radar .progress .left .circleBox {
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+}
+.pop.find .findPop .radar .progress .right .circleBox {
+    -webkit-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+}
+.pop.find .findPop .radar .progress .circleBox .circle-wrapper .circle {
+    position: absolute;
+    top: 0;
+    width: 200%;
+    height: 100%;
+    border-radius: 100%;
+    background: #ff9b28;
+}
+.pop.find .findPop .radar .progress .right .circleBox .circle-wrapper .circle {
+    right: 0;
+}
+.pop.find .findPop .radar .progress .left .circleBox .circle-wrapper .circle {
+    left: 0;
+}
+.pop.find .findPop .radarTitle {
+    width: 450px;
+    height: 94px;
+    position: absolute;
+    top: 127px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.pop.find .findPop .radarTip {
+    width: 265px;
+    height: 53px;
+    position: absolute;
+    top: 730px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.pop.find .findPop .note {
+    width: 476px;
+    position: absolute;
+    top: 858px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-size: 24px;
+    color: #fff;
+}
+.pop.find .findPop .hint {
+    width: 552px;
+    height: 241px;
+    position: absolute;
+    top: 336px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    -webkit-animation: nothing 10s infinite;
+    animation: nothing 10s infinite;
+    z-index: 12;
+}
+@-webkit-keyframes nothing {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+@keyframes nothing {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+
+#shopIndex .startBtn {
+    width: 210px;
+    height: 102px;
+    position: absolute;
+    top: 459px;
+    right: 74px;
+}
+#shopIndex .lastBtn {
+    width: 640px;
+    height: 436px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.pop.run .runPop {
+    width: 466px;
+    height: 542px;
+}
+.pop.bluetooth .bluetoothPop {
+    width: 537px;
+    height: 625px;
+}
+.pop.bluetooth .bluetoothPop .close {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.pop.bluetooth .bluetoothPop .closeBtn {
+    width: 210px;
+    height: 102px;
+    position: absolute;
+    top: 465px;
+    left: 165px;
+}
+.pop.finish .finishPop {
+    width: 541px;
+    height: 479px;
+}
+.pop.finish .finishPop .siteBtn {
+    width: 210px;
+    height: 103px;
+    position: absolute;
+    top: 323px;
+    left: 167px;
+}
+#exchange #shopIpt {
+    width: 334px;
+    top: 679px;
+    padding: 10px 0;
+    left: 153px;
+    text-align: center;
+}
+#exchange .submitBtn {
+    width: 210px;
+    height: 102px;
+    position: absolute;
+    top: 805px;
+    left: 211px;
+}
+
+#land {
+    background: #fff;
+}
+#land .gameList {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 640px;
+}
+#land .gameList li {
+    position: relative;
+    height: 20%;
+}
+#land .gameList li a {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.pop.result .resultPop {
+    width: 547px;
+    height: 809px;
+}
+.pop.result .resultPop .lotteryBtn {
+    width: 210px;
+    height: 104px;
+    position: absolute;
+    top: 650px;
+    left: 46px;
+}
+.pop.result .resultPop .shareBtn {
+    width: 210px;
+    height: 104px;
+    position: absolute;
+    top: 650px;
+    right: 46px;
+}
+.pop.result .resultPop .score {
+    font-size: 36px;
+    color: #dc291a;
+    position: absolute;
+    top: 275px;
+    left: 341px;
+    font-style: italic;
+}
+.pop.result .resultPop .combo {
+    font-size: 36px;
+    color: #dc291a;
+    position: absolute;
+    top: 337px;
+    left: 341px;
+    font-style: italic;
+}
+.pop.result .resultPop .percent {
+    font-size: 36px;
+    color: #dc291a;
+    position: absolute;
+    top: 400px;
+    left: 250px;
+    font-style: italic;
+}
+.pop.result .resultPop .percent::after {
+    content: '%';
+}
+.pop.result .resultPop .proccess {
+    color: #5b2800;
+    font-size: 28px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 500px;
+    font-style: italic;
+}
+.pop.result .resultPop .proccess .version {
+    color: #427639;
+}
+.pop.result .resultPop .proccess .num {
+    color: #dc291a;
+    font-size: 36px;
+}
+.pop.result .resultPop .proccess .num::after {
+    content: '%';
+}
+.pop.share .sharePop {
+    width: 100%;
+    height: 100%;
+}
+.pop.share .sharePop .close {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#share .text {
+    width: 411px;
+    height: 303px;
+    position: absolute;
+    top: 369px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: url(../images/shareTextOnline.png) center no-repeat;
+    background-size: cover;
+}
+#share .text.off {
+    background: url(../images/shareTextOffline.png) center no-repeat;
+    background-size: cover;
+}
+#share .text .name {
+    color: #232227;
+    font-size: 34px;
+    position: absolute;
+    top: -12px;
+    left: 192px;
+}
+#share .text .blocks {
+    color: #5b2800;
+    font-size: 34px;
+    width: 128px;
+    position: absolute;
+    top: 125px;
+    left: 96px;
+    text-align: center;
+}
+#share .text .percent {
+    color: #5b2800;
+    font-size: 34px;
+    width: 86px;
+    position: absolute;
+    top: 193px;
+    left: 96px;
+    text-align: center;
+}
+#share .text .percent::after {
+    content: '%';
+}
+#share .gameBtn {
+    width: 210px;
+    height: 103px;
+    position: absolute;
+    top: 817px;
+    left: 217px;
+}
+
+#prize {
+    background: url(../images/prizeBg.jpg) top center no-repeat #fdc41f;
+    background-size: contain;
+    padding: 100px 0;
+}
+#prize .prizeTitle {
+    width: 240px;
+    height: 60px;
+    margin: auto;
+}
+#prize .prizeList {
+    width: 505px;
+    margin: auto;
+    margin-top: 27px;
+}
+#prize .prizeList li {
+    width: 100%;
+    height: 157px;
+    position: relative;
+    margin-bottom: 6px;
+    -webkit-filter: grayscale(1);
+}
+#prize .prizeList li.on {
+    -webkit-filter: none;
+}
+#prize .prizeList li .btn {
+    display: none;
+    width: 74px;
+    height: 74px;
+    background: #5b2800;
+    border-radius: 100%;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    overflow: hidden;
+    font-size: 18px;
+    color: #fff;
+}
+#prize .prizeList li:nth-child(1) .btn {
+    top: 48px;
+}
+#prize .prizeList li:nth-child(2) .btn {
+    top: 44px;
+}
+#prize .prizeList li:nth-child(3) .btn,
+#prize .prizeList li:nth-child(4) .btn,
+#prize .prizeList li:nth-child(5) .btn {
+    top: 68px;
+}
+#prize .prizeList li.on .btn {
+    display: block;
+}
+#prize .prizeList li.on.got .btn::before {
+    content: '已经\A领取';
+}
+#prize .prizeList li .btn::before {
+    white-space: pre;
+    width: 100%;
+    position: absolute;
+    top: 17px;
+    left: 0;
+    text-align: center;
+    font-size: 18px;
+    line-height: 20px;
+}
+#prize .prizeList li.on .btn::before {
+    content: '立即\A领取';
+}
+#prize .prizeList li.coupon .btn::before {
+    content: '立即\A使用';
+}
+#prize .prizeList li.package.get .btn::before {
+    content: '立即\A兑换';
+}
+#prize .prize-title{
+    text-align: center;margin:50px 0 30px 0;
+}
+#prize .prize-title img{
+    display:inline-block;
+}
